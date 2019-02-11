@@ -1,131 +1,115 @@
-var wordPool = ["djent", "vapor", "polka"];
+$(document).ready(function () {
 
-    var secretWord = wordPool[Math.floor(Math.random() * wordPool.length)];
+  var userTotal = 0;
+  var gameWins = 0;
+  var gameLosses = 0;
 
-    var userWins = 0;
-    var guessesRemaining = 10;
-    var userGuesses = [];
-    var internalCorrectGuesses = [];
-    // var gameWin = internalCorrectGuesses === secretWord.length;
+  var randomNumber = Math.floor(Math.random() * 101 + 19) // Generates random number
+  var randomizeNumber = function () {
+    randomNumber = Math.floor(Math.random() * 101 + 19);
+  }
+  $('#randomNumber').text(randomNumber); // Writes initial value of randomNumber to the DOM
+  var randomReplace = function () { // Function to replace random number when run in resetGame()
+    $('#randomNumber').text(randomNumber);
+  }
 
+  var jewelOne = Math.floor(Math.random() * 11 + 1) // Sets jewel value
+  var jewelTwo = Math.floor(Math.random() * 11 + 1)
+  var jewelThree = Math.floor(Math.random() * 11 + 1)
+  var jewelFour = Math.floor(Math.random() * 11 + 1)
 
-    $(document).ready(function () {
+  var randomizeGame = function () {
+    jewelOne = Math.floor(Math.random() * 11 + 1)
+    jewelTwo = Math.floor(Math.random() * 11 + 1)
+    jewelThree = Math.floor(Math.random() * 11 + 1)
+    jewelFour = Math.floor(Math.random() * 11 + 1)
+  };
 
+  $('#numberWins').text(gameWins); // Writes initial value of gameWins to the DOM
+  var updateWins = function () {
+    $('#numberWins').text(gameWins);
+  }
 
-      document.onkeyup = function (event) {
-        var userChoice = event.key;
+  $('#numberLosses').text(gameLosses); // Writes initial value of gameLosses to the DOM
+  var updateLosses = function () {
+    $('#numberLosses').text(gameLosses);
+  }
 
-        // This adds to the userGuess array of guessed letters and then prints out the full array
-        var guessChange = function () {
-          userGuesses.push(userChoice);
-          $("#user-guesses").text(userGuesses);
-          guessesRemaining--;
-          $("#user-remaining").text(guessesRemaining);
-        }
+  $('#game-counter-total').text(userTotal); // Writes initial value of userTotal to the DOM
+  var updateUserTotal = function () {
+    $('#game-counter-total').text(userTotal);
+  }
 
-        var correctGuesses = function () {
-          internalCorrectGuesses.push(userChoice);
-        }
+  var debugUserTotal = function () {
+    console.log("Updated userTotal =  " + userTotal);
+  }
 
-        var restartGame = function () {
-          secretWord = wordPool[Math.floor(Math.random() * wordPool.length)];
-          guessesRemaining = 10;
-          userGuesses = [];
-          internalCorrectGuesses = [];
-          $("#user-guesses").text("");
-          $("#user-remaining").text("10");
-          $("#letter1").text("_");
-          $("#letter2").text("_");
-          $("#letter3").text("_");
-          $("#letter4").text("_");
-          $("#letter5").text("_");
+  var debugRandomNumber = function () {
+    console.log("New randomNumber = " + randomNumber);
+  }
 
-        }
+  function resetGame() { // This will reset the game when called 
+    randomizeNumber();
+    debugRandomNumber();
+    randomReplace();
+    randomizeGame();
+    userTotal = 0;
+    updateUserTotal();
+  }
 
-        var userWinsGame = function () {
+  function userWinsGame() { // This function will alert a game win, updates the win counter & resets the game
+    alert("You won the game!");
+    gameWins++;
+    updateWins();
+    resetGame();
+  }
 
-        userWins++;
-        $("#user-wins").text(userWins);
-        }
+  function userLosesGame() { // This function will alert a game loss, updates the loss counter & resets the game
+    alert("You lost the game!");
+    gameLosses++;
+    updateLosses();
+    resetGame();
+  }
 
-        var winCondition = internalCorrectGuesses === secretWord.length;
-        // var winCondition = function () {
-          
-        // if (internalCorrectGuesses === secretWord.length) {
-
-        // userWinsGame();
-        // restartGame();
-        // }
-        // }
-        
-        // For some reason we cannot get the win condition tied to the final keypress, for sure this is a limitation on our approach and we should have used an array! 
-
-        if (!/^[a-z]$/.test(userChoice)) {
-          alert("Please press a letter!")
-         } 
-        
-        else if (internalCorrectGuesses.length === secretWord.length) {
-
-          alert("You have won the game!")
-          userWinsGame();
-          restartGame();
-
-
-        } else if (guessesRemaining <= 0) {
-
-          alert("Game is over! Press F5 to restart and try again!");
-          restartGame();
-
-        } else if (userChoice === secretWord[0]) {
-
-          $("#letter1").text(secretWord[0]);
-          guessChange();
-          correctGuesses();
-          if (internalCorrectGuesses === secretWord.length) {  // how can we get the game to win on final keystroke? Tried to nest an if statement but it still didn't trigger
-            userWinsGame();
-            restartGame();
-          }
-          // winCondition();
-
-        } else if (userChoice === secretWord[1]) {
-
-          $("#letter2").text(secretWord[1]);
-          guessChange();
-          correctGuesses();
-
-        } else if (userChoice === secretWord[2]) {
-
-          $("#letter3").text(secretWord[2]);
-          guessChange();
-          correctGuesses();
-
-
-        } else if (userChoice === secretWord[3]) {
-
-          $("#letter4").text(secretWord[3]);
-          guessChange();
-          correctGuesses();
-          
-
-        } else if (userChoice === secretWord[4]) {
-
-          $("#letter5").text(secretWord[4]);
-          guessChange();
-          correctGuesses();
-          
-
-        } else if (userChoice !== secretWord) {
-
-          guessChange();
-        }
-
-        console.log(internalCorrectGuesses);
-        console.log(userChoice);
-        console.log(userGuesses);
-        console.log(secretWord);
-
-        // } // Letter checker ends
-
-      }; // Document On Key End
-
-    }); // Document On Load End
+  $('#jewel-one').on('click', function () { // On click event for each jewel press, checks to see if win/loss conditions are met
+    userTotal = userTotal + jewelOne;
+    debugUserTotal(); // debugs to see if userTotal is being updated on click
+    updateUserTotal();
+    // Is there a way to wrap this if statement below into a variable and call it without having to write out this every time?
+    if (userTotal == randomNumber) { // if userTotal is equal to randomNumber set at start -> game wins! 
+      userWinsGame();
+    } else if (userTotal > randomNumber) { // else -> game loss!
+      userLosesGame();
+    }
+  })
+  $('#jewel-two').on('click', function () {
+    userTotal = userTotal + jewelTwo;
+    debugUserTotal();
+    updateUserTotal();
+    if (userTotal == randomNumber) {
+      userWinsGame();
+    } else if (userTotal > randomNumber) {
+      userLosesGame();
+    }
+  })
+  $('#jewel-three').on('click', function () {
+    userTotal = userTotal + jewelThree;
+    debugUserTotal();
+    updateUserTotal();
+    if (userTotal == randomNumber) {
+      userWinsGame();
+    } else if (userTotal > randomNumber) {
+      userLosesGame();
+    }
+  })
+  $('#jewel-four').on('click', function () {
+    userTotal = userTotal + jewelFour;
+    debugUserTotal();
+    updateUserTotal();
+    if (userTotal == randomNumber) {
+      userWinsGame();
+    } else if (userTotal > randomNumber) {
+      userLosesGame();
+    }
+  });
+});
