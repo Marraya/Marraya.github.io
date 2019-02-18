@@ -2,71 +2,85 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Crystal Collector Game</title>
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	 crossorigin="anonymous">
-
-	<!-- Custom CSS -->
-	<link href="assets/css/style.css" rel="stylesheet">
-
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-
-	<!-- jQuery -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!-- Game Javascript -->
-	<script src="assets/javascript/game.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Metal Quiz</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <!-- Custom CSS -->
+  <link href="css/main.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
-	<div class="row hero-section">
-		<div class="game-parent col-lg-6">
-			<h1 class="game-title">Crystal Collector</h1>
-			<div class="game-instructions">
-				<h3>Instructions on how to play:</h3>
-				</br>
-				<ul>
-					<li>You will be assigned a random number at the start of the game.</li>
-					<li>By clicking on any of the crystals below, you will add a <strong>random</strong> amount to your total score.</li>
-					<li>You win the game by matching your total score to the random number.</li>
-					<li>You lose the game if your total score goes above the random number.</li>
-					<li>Each time you win or lose, all scores are reset and the crystal values are randomized again.</li>
-				</ul>
-			</div>
-			<div class="game-stats">
-				<div class="numberToMatch">
-					<h2>Random Number To Match:
-						<span id="randomNumber"></span>
-					</h2>
-				</div>
-				<div class="winsAndLosses">
-					<h2>Your Wins:
-						<span id="numberWins"></span>
-						</br>
-						Your Losses:
-						<span id="numberLosses"></span>
-					</h2>
-				</div>
-				<div class="userTotal">
-					<h2>Your Current Score:
-						<span id="game-counter-total"></span>
-					</h2>
-				</div>
-			</div>
-			<div class="game-container">
-				<div class="gems">
-					<img src="assets/images/crystal1.jpg" class=gemImage id="jewel-one">
-					<img src="assets/images/crystal2.jpg" class=gemImage id="jewel-two">
-					<img src="assets/images/crystal3.jpg" class=gemImage id="jewel-three">
-					<img src="assets/images/crystal4.jpg" class=gemImage id="jewel-four">
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container full-game-container">
+      <div class="intro-screen">
+        <div class="row text-center">
+          <h1>How Metal Are You?</h1>
+        </div>
+        <div class="row faceless">
+          <img src="img/faceless.png">
+        </div>
+        <div class="row text-center">
+          <div class='main-button-container'>
+            <a class='btn btn-primary btn-lg btn-block start-button' href='#' role='button'>Start The Quiz!</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Question Area *Hidden On Load** -->
+      <div id="user-question-area">
+        <p class='timer-p'>Time Remaining: <span class='timer'>15</span></p>
+        <p id="question-here">Question:</p>
+        <div class="answer" id="first-a"></div>
+        <div class="answer" id="second-a"></div>
+        <div class="answer" id="third-a"></div>
+        <div class="answer" id="fourth-a"></div>
+      </div>
+
+      <!-- User Win Correct Answer Area *Hidden On Load** -->
+      <div id="user-correctanswer-area">
+        <p class='timer-p'>Time Remaining: <span class='timer'></span></p>
+        <p>Correct! The answer is: <span class="correct-answer"></span></p>
+      </div>
+
+      <!-- User Loss Wrong Answer Area *Hidden On Load** -->
+      <div id="user-wronganswer-area">
+        <p class='timer-p'>Time Remaining: <span class='timer'></span></p>
+        <p>Wrong! The correct answer is: <span class="correct-answer"></span></p>
+        <img class='center-block img-wrong' src='img/x.png'>
+      </div>
+
+      <!-- User Loss Time Over Area *Hidden On Load** -->
+      <div id="user-timeover-area">
+        <p class='timer-p'>Time Remaining: <span class='timer'></span></p>
+        <p>You ran out of time! The correct answer was: <span class="correct-answer"></span></p>
+        <img class='center-block img-wrong' src='img/x.png'>
+      </div>
+
+      <!-- User Game Over Area *Hidden On Load** -->
+      <div id="user-gameover-area">
+        <p class='timer-p'>Time Remaining: <span class='timer'>0</span></p>
+        <p>All done, here's how you did!</p>
+        <p>Correct Answers: <span id="user-correct-total"></span></p>
+        <p>Wrong Answers: <span id="user-wrong-total"></span></p>
+        <p>Unanswered: <span id="user-timeout-total"></span></p>
+        <p class='reset-button-container'><a class='btn btn-primary btn-lg btn-block reset-button' href='#' role='button'>Reset
+            The Quiz!</a></p>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <!-- Game Javascript -->
+  <script src="js/game.js"></script>
+
 </body>
 
 </html>
