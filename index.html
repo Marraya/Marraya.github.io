@@ -1,42 +1,402 @@
 <!DOCTYPE html>
-
-<html lang="en-us">
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Team 5 - Project 1">
+    <title>Team 5 - Project 1</title>
 
-  <meta charset="UTF-8">
-  <title>GIPHY API Homework</title>
+    <!-- Favicon -->
+    <link rel="icon" href="./assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700,800">
+    <link rel="stylesheet" href="https://use.typekit.net/rty5oeg.css">
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="./assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <!-- Page plugins -->
+    <link type="text/css" href="./assets/vendor/swiper/dist/css/swiper.min.css" rel="stylesheet">
 
-  <!-- CSS Reset Sheet -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="./assets/css/theme.css">
 
-  <!-- Local CSS Sheet -->
-  <link rel="stylesheet" href="assets/css/style.css">
-
-  <!-- jQuery -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Geo" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css">
 
 </head>
 
 <body>
 
-  <div id="wrapper">
-    <h1>Click Below To Start!</h1>
-    <div id="button-wrapper"></div>
-    <form id="gif-form" style="padding-top:5%;">
-      <label for="gif-input">Looking for something different?</label><br />
-      <input type="text" id="gif-input">
-      <input id="add-gif" type="submit" value="Add A New Gif!">
-    </form>
-    <div id="sub-wrapper">
-    </div>
-  </div>
+    <header class="header-transparent" id="header-main">
+        <!-- Top Bar -->
+        <div id="navbar-top-main" class="navbar-top  navbar-dark bg-dark border-bottom">
+            <div class="container">
+                <div class="navbar-nav align-items-center">
+                    <div class="d-none d-lg-inline-block">
+                        <span class="navbar-text mr-3">Team 5's Project 1</span>
+                    </div>
+                    <div>
+                        <ul class="nav">
+                            <li class="nav-item dropdown ml-lg-2 dropdown-animate" data-toggle="hover">
+                                <a class="nav-link px-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    <img alt="Image placeholder" src="./assets/img/icons/flags/us.svg">
+                                    <span class="d-none d-lg-inline-block">English</span>
+                                    <span class="d-lg-none">EN</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-arrow">
+                                    <a href="" class="dropdown-item">
+                                        <img alt="Image placeholder" src="./assets/img/icons/flags/es.svg">Spanish</a>
+                                    <a href="" class="dropdown-item">
+                                        <img alt="Image placeholder" src="./assets/img/icons/flags/ro.svg">Romanian</a>
+                                    <a href="" class="dropdown-item">
+                                        <img alt="Image placeholder" src="./assets/img/icons/flags/gr.svg">Greek</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ml-auto">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Always be slackin'</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <!-- Script -->
-  <script type="text/javascript" src="hw.js"></script>
+        <!-- Main navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-dark bg-darker" id="navbar-main">
+            <div class="container">
+                <a class="navbar-brand mr-lg-5" href="index.html">
+                    <img alt="African Ancestry - Logo" src="./assets/img/brand/drinklogo.png" style="height: 50px;">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse"
+                    aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-main-collapse">
+                    <ul class="navbar-nav align-items-lg-center">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="index.html">How It Works</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" role="button">FAQ's</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                        <li class="nav-item mr-3">
+                            <a href="#" target="_blank" class="nav-link d-lg-none"><span class="btn-inner--icon"><i
+                                        class="fas fa-magic"></i></span>Who's Online</a>
+                            <a href="#" target="_blank" class="btn btn-sm btn-primary btn-icon d-none d-lg-inline-flex">
+                                <span class="btn-inner--icon"><i class="fas fa-magic"></i></span>
+                                <span class="btn-inner--text">Who's Online</span>
+                            </a>
+                        </li>
+                        <li class="nav-item mr-3">
+                            <a href="#" target="_blank" class="nav-link d-lg-none"><span class="btn-inner--icon"><i
+                                        class="fas fa-user-cog"></i></span>Bar Owner Login</a>
+                            <a href="#" target="_blank" class="btn btn-sm btn-danger btn-icon d-none d-lg-inline-flex"
+                                data-toggle="modal" data-target="#modal_5">
+                                <span class="btn-inner--icon"><i class="fas fa-user-cog"></i></span>
+                                <span class="btn-inner--text">Bar Owner Login</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Modal -->
+        <div class="modal modal-danger fade" id="modal_5" tabindex="-1" role="dialog" aria-labelledby="modal_5"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title_6">Bar Owner // Firebase Auth Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="padding-top:0rem;padding-bottom:0rem">
+                        <div class="py-3 text-center">
+                            <p style="background: black; padding: 10px; box-shadow: 1px 1px 10px #00000050;border-radius:5px;margin-top:10px;">
+                                <span id="server-error">Server alert/error response can go here. <br />Remember no alerts or prompts allowed!</span>
+                            </p>
+                            <div class="main-div" id="login_div">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label class="form-control-label text-white" style="float:left;">Email address</label>
+                                        <div class="input-group input-group-transparent">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background:white"><i class="fas fa-user"></i></span>
+                                            </div>
+                                            <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <label class="form-control-label text-white">Password</label>
+                                            </div>
+                                            <div class="mb-2">
+                                                <a href="recover.html" class="small text-white text-unerline--dashed">Lost
+                                                    password?</a>
+                                            </div>
+                                        </div>
+                                        <div class="input-group input-group-transparent">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background:white"><i class="fas fa-key"></i></span>
+                                            </div>
+                                            <input type="password" class="form-control" id="input-password" placeholder="Password">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" style="background:white">
+                                                    <i class="fas fa-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mb-3">
+                                        <button type="button" class="btn btn-block btn-primary" onclick="login()">Sign
+                                            in</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div id="user_div" class="loggedin-div" style="background: black; padding: 5%; box-shadow: 1px 1px 10px #00000050;border-radius:5px;margin-top:10px;">
+                                <h3 class="text-white">User Status: Logged In</h3>
+                                <p id="user_param">We could probably add date and time here?</p>
+                                <p>Additional Parameters:</p>
+
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label class="form-control-label text-white" style="float:left;">Enter Bar ID</label>
+                                        <div class="input-group input-group-transparent">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background:white"><i class="fas fa-beer"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" id="input-text" placeholder="BARID000-23">
+                                        </div>
+                                        <label class="d-block" style="padding-top:20px">My Bar Is Super Hot Right Now</label>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span class="toggle-switch-slider"></span>
+                                        </label>
+                                        <div style="padding-top:20px;">
+                                            <button type="button" class="btn btn-sm btn-secondary" id="input-bar-status">Update Bar Status</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="log-out">
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" onclick="logout()">Log
+                            Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Spotlight -->
+        <section class="bg-darker">
+            <div class="spotlight overflow-hidden bg-cover bg-size--cover" data-spotlight="fullscreen" style="background-image: url('./assets/img/backgrounds/barback.jpg'); background-position: center center">
+                <span class="mask bg-gradient-dark opacity-6"></span>
+                <div class="spotlight-holder">
+                    <div class="container py-xl d-flex align-items-center">
+                        <div class="container pt-md">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="card shadow zindex-100" style="background:#00000085">
+                                        <div class="card-body px-md-3 py-3">
+                                            <div class="text-center text-white">
+                                                <h6 class="h3 text-white">Map Module Begins</h6>
+                                                <div id="map-container" style="padding-top: 15%;padding-bottom:15%;background:#3e0e7b"></div>
+                                                <h6 class="h3 text-white" style="margin-bottom:0px;">Map Module Ends</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Mission Dual -->
+
+        <section class="slice slice-lg bg-darker" style="padding-top: 4rem;padding-bottom: 4rem;border-top: 3px ridge #f6a41d;border-bottom: 3px ridge #f6a41d;
+    box-shadow: 2px 8px 10px #00000040;">
+            <div class="container">
+                <div class="row row-grid text-center">
+                    <div class="col-md-6 mb-5 mb-md-0">
+                        <h3 class="text-white mb-4">Chat SMS Module</h3>
+                        <p class="lead text-white lh-150 mb-0" style="padding-left: 25px;
+                        padding-right: 25px;">Based
+                            on Firebase; a simple messenger service tied to the 'active' viewers that are currently on
+                            the site.</p>
+                    </div>
+                    <div class="col-md-6 mb-5 mb-md-0">
+                        <h3 class="text-white mb-4">Real Time Updates</h3>
+                        <p class="lead text-white lh-150 mb-0" style="padding-left: 25px;
+                        padding-right: 25px;">Can
+                            we change local variables and overlay them to the Geocoding API powered map above? Let's
+                            try!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal Pop Up Custom -->
+        <div class="modal modal-fluid fade" id="modal_1" tabindex="-1" role="dialog" aria-labelledby="modal_1"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8 text-center py-4">
+                                <h4 class="heading h3">Activation & Tracking Goes Here</h4>
+                                <p class="lead text-muted">
+                                    Maybe we can keep the user flow to a single page this way? If too difficult, this
+                                    will lead to a dedicated page '/activation.html'
+                                </p>
+                                <div class="py-md">
+                                    <img src="./assets/img/prv/splash.png" class="img-fluid img-center">
+                                </div>
+                                <button type="button" class="btn btn-lg btn-primary px-5" data-dismiss="modal">Activate
+                                    & Track!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Module Here -->
+        <section class="position-relative pb-sm pt-sm bg-secondary">
+            <div class="bg-img-holder top-0 right-0 col-lg-6 zindex-100" data-bg-size="cover">
+                <img alt="Image placeholder" src="./assets/img/prv/img3.jpg">
+            </div>
+            <div class="container py-md">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="text-center text-lg-left">
+                            <div class="card shadow zindex-100">
+                                <div class="card-body px-md-3 py-3">
+                                    <div class="text-center mb-5">
+                                        <h6 class="h3">Chat Module Below</h6>
+                                        <div id="chat-module"></div> <!-- Chat Module Here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yelp Reviews Here -->
+
+        <section class="position-relative pb-sm pt-sm bg-secondary">
+            <div class="bg-img-holder top-0 left-0 col-lg-6 zindex-100" data-bg-size="cover">
+                <img alt="Image placeholder" src="./assets/img/prv/img4.jpg">
+            </div>
+            <div class="container py-md">
+                <div class="row">
+                    <div class="col-lg-5 ml-lg-auto">
+                        <div class="text-center text-lg-left">
+                            <div class="card shadow zindex-100">
+                                <div class="card-body px-md-3 py-3">
+                                    <div class="text-center mb-5">
+                                        <h6 class="h3">Yelp Module Below</h6>
+                                        <div id="yelp-module"></div> <!-- Yelp Module Here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="slice slice-lg bg-dark" style="padding-top: 4rem;padding-bottom: 4rem;border-top: 3px ridge #f6a41d;border-bottom: 3px ridge #f6a41d;
+    box-shadow: 2px 8px 10px #00000040;">
+            <div class="container">
+                <div class="row row-grid text-center">
+                    <div class="col-md-12 mb-5 mb-md-0">
+                        <h1 class="text-white mb-4">Add anything to this area!</h1>
+                        <p class="lead text-white lh-150 mb-0" style="padding-left: 25px;
+                        padding-right: 25px;">The
+                            sky is the <strong>limit</strong> here!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer footer-dark bg-darker" style="padding-top:0px;">
+        <div class="container">
+            <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
+                <div class="col-md-6">
+                    <div class="copyright text-sm font-weight-bold text-center text-md-left">
+                        &copy; 2019 <a href="#" class="font-weight-bold" target="_blank">Team 5 - Project 1</a> | All
+                        rights reserved.
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ul class="nav justify-content-center justify-content-md-end mt-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" target="_blank">
+                                <i class="fab fa-dribbble"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" target="_blank">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Core -->
+    <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/vendor/in-view/dist/in-view.min.js"></script>
+    <!-- Page plugins -->
+    <script src="./assets/vendor/swiper/dist/js/swiper.min.js"></script>
+    <!-- Theme JS -->
+    <script src="./assets/js/theme.min.js"></script>
+    <script src="./assets/js/chat.js"></script>
+    <script src="./assets/js/yelp.js"></script>
+    <script src="./assets/js/map-overlay.js"></script>
+    <script src="./assets/js/map.js"></script>
+    <!-- Custom JS -->
+    <script src="./assets/js/custom.js"></script>
+    <!-- Firebase JS -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+    <!-- Login JS -->
+    <script src="./assets/js/login.js"></script>
+
 
 </body>
 
